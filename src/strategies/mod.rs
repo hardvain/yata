@@ -1,1 +1,2 @@
 mod hma_pivot_reversal_strategy;
+mod hma_ema_crossover_strategy;
