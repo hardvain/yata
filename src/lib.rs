@@ -164,6 +164,7 @@ pub mod core;
 pub mod helpers;
 pub mod indicators;
 pub mod methods;
+mod strategies;
 
 /// Contains main traits you need to start using this library
 pub mod prelude {
