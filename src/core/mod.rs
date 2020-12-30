@@ -10,11 +10,13 @@ mod method;
 mod ohlcv;
 mod sequence;
 mod window;
+mod strategy;
 
 pub use action::Action;
 pub use candles::*;
 pub use errors::Error;
 pub use indicator::*;
+pub use strategy::*;
 pub use method::Method;
 pub use ohlcv::OHLCV;
 pub use sequence::*;

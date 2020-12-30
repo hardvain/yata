@@ -59,7 +59,6 @@ impl IndicatorConfig for HullMovingAverage {
 
 		Ok(Self::Instance {
 			hma: HMA::new(cfg.period, src)?,
-			pivot: ReversalSignal::new(cfg.left, cfg.right, src)?,
 			cfg,
 		})
 	}
@@ -117,9 +116,7 @@ impl Default for HullMovingAverage {
 #[derive(Debug, Clone)]
 pub struct HullMovingAverageInstance {
 	cfg: HullMovingAverage,
-
 	hma: HMA,
-	pivot: ReversalSignal,
 }
 
 impl IndicatorInstance for HullMovingAverageInstance {
@@ -131,8 +128,6 @@ impl IndicatorInstance for HullMovingAverageInstance {
 
 	fn next<T: OHLCV>(&mut self, candle: &T) -> IndicatorResult {
 		let value = self.hma.next(candle.source(self.cfg.source));
-		let signal = self.pivot.next(value);
-
-		IndicatorResult::new(&[value], &[signal])
+		IndicatorResult::new(&[value])
 	}
 }
